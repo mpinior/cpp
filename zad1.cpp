@@ -5,7 +5,7 @@ using namespace std;
 
 int **Array2D(int n_rows, int n_cols){
     int **tab = new int *[n_rows];
-    for (int i = 0; i<n_cols; i++)
+    for (int i = 0; i<n_rows; i++)
         tab[i] = new int [n_cols];
     return tab;
 }
@@ -15,7 +15,6 @@ void Array(int n_rows, int n_cols,int **tab){
     int number = 1;
     for (int i=0; i<n_rows; i++){
         for (int j=0; j<n_cols; j++){
-            cout<<number<<" i "<<i<<" j "<<j<<endl;
             tab[i][j]= number;
             number++;
         }
