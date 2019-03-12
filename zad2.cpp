@@ -28,6 +28,7 @@ string PolybiusDecrypt(string crypted) {
     string answer;
     int j=0;
     for(int i=0;i<crypted.length();i+=3) {
+        if (crypted[i] == ' ') continue;
         char tmp;
         int first = (crypted[i] - 49)*5;
         int second = crypted[i+1] - 48;
@@ -74,9 +75,6 @@ int main(int argc, char *argv[]){
             }
         }
     }
-
-
-
 
     file_read.close();
     file_write.close();
