@@ -1,10 +1,23 @@
 #include <iostream>
 #include "Student.h"
 
-std::ostream & operator<<(std::ostream &screen, StudyYear &year){
-    screen << "year ";
+std::ostream & operator<<(std::ostream &screen,const StudyYear &year){
+    screen << "year: ";
     screen << year.value;
     return screen;
+}
+
+std::ostream & operator<<(std::ostream &screen,const Student &info){
+    screen <<"{id: '"<<info.id<<"', firstName: '"<<info.firstName<<"', lastName: '"<<info.lastName<<"', field: '"<<info.field<<"', "<<info.year<<"}";
+    return screen;  
+}
+
+
+bool StudyYear::operator==(StudyYear year){
+    return this->value == year.value;
+}
+bool StudyYear::operator<(StudyYear year){
+    return this->value < year.value;
 }
 
 
@@ -34,6 +47,9 @@ void StudyYear::operator++(int){
 void StudyYear::operator--(int ){
     this->value -=1;
 }
+StudyYear::operator int(){
+    return this->value;
+}
 
 
 Student::Student(){
@@ -57,4 +73,14 @@ StudentRepository::StudentRepository(){
 
 StudentRepository::~StudentRepository(){
 
+}
+
+
+void StudentRepository::SetStudent(Student student, int index){
+    this->students[index] = student;
+}
+
+
+Student StudentRepository::operator[](int index){
+    return this->students[index];
 }

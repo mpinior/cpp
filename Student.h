@@ -4,19 +4,22 @@ class StudyYear{
     int value;
 
     public:
-        //konstruktor
+
         StudyYear();
         StudyYear(int v);
         ~StudyYear();
 
-        //get
+
         int GetVal();
-        //Set
         void SetVal(int v);
 
         void operator++(int);
         void operator--(int);
-        friend std::ostream & operator<<(std::ostream &screen, StudyYear &year);
+        bool operator==(StudyYear);
+        friend std::ostream & operator<<(std::ostream &screen,const StudyYear &year);
+        bool operator<(StudyYear);
+        operator int();
+
 };
 
 class Student{
@@ -27,10 +30,10 @@ class Student{
     StudyYear year;
 
     public:
-        //konstruktor
         Student();
         Student(std::string i, std::string f, std::string l, std::string fie, StudyYear y);
-        ~Student();      
+        ~Student();    
+        friend std::ostream & operator<<(std::ostream &screen,const Student &info);
 };
 
 class StudentRepository{
@@ -39,4 +42,10 @@ class StudentRepository{
     public:
         StudentRepository();
         ~StudentRepository();
+
+        void SetStudent(Student student, int);
+
+    
+        Student operator[](int index);
+
 };
