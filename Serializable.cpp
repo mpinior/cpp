@@ -1,5 +1,6 @@
 #include "Serializable.h"
 
-Serializable::Serialize(Serializer *){
 
+void Serializable::Serialize(Serializer *) {
+    std::cout<<"TEST"<<std::endl;
 }

@@ -1,10 +1,11 @@
 #include "JsonSerializer.h"
 
-JsonSerializer(std::string text1, std::string text2){
-
+JsonSerializer::JsonSerializer(std::string text1, std::string text2){
+    this->text1 = text1;
+    this->text2 = text2;
 }
 
-Serialize(Serializer *){
+void JsonSerializer::Serialize(Serializer *ser){
     ser->text += "{text1:\" ";
     ser->text += text1;
     ser->text += "\"}\n";

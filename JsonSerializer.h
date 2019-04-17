@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Serializable.h"
 
 
 
@@ -10,8 +11,6 @@ class JsonSerializer:public Serializable{
     public:
         JsonSerializer(std::string text1, std::string text2);
         
-        Serialize(Serializer *);
+        void Serialize(Serializer *);
 
 };
-
-

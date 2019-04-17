@@ -1,10 +1,9 @@
 #include <iostream>
 #include "Serializer.h"
 
+
 class Serializable{
     public:
-        Serialize(Serializer *);
-
-
+        virtual void Serialize(Serializer *);
 };
 

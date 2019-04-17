@@ -1,4 +1,5 @@
 #include <iostream>
+#include "JsonSerializer.h"
 
 class XmlSerializer:public Serializable{
     private:
@@ -7,7 +8,7 @@ class XmlSerializer:public Serializable{
         
     public:
         XmlSerializer(std::string text1, std::string text2);
-        Serialize(Serializer *);
+        void Serialize(Serializer *);
 
 };
 
