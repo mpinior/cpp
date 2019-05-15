@@ -1,4 +1,7 @@
+#ifndef QUERY_H
+#define QUERY_H
 #include <iostream>
+#include <memory>
 #include "Student.h"
 
 class Query{
@@ -6,7 +9,6 @@ class Query{
         virtual ~Query();
         virtual bool Accept(const Student &student) const = 0;
 };
-
 
 class ByFirstName :public Query{
     std::string firstName;
@@ -23,7 +25,7 @@ class ByLastName :public Query{
     public:
         ByLastName(std::string lastName);
         virtual ~ByLastName();
-        virtual bool Accept(const Student &student) const overide;
+        virtual bool Accept(const Student &student) const override;
 };
 
 class ByOneOfPrograms:public Query{
@@ -32,7 +34,7 @@ class ByOneOfPrograms:public Query{
     public:
         ByOneOfPrograms(std::string field);
         virtual ~ByOneOfPrograms();
-        virtual bool Accept(const Student &student) const overide;
+        virtual bool Accept(const Student &student) const override;
 };
 
 
@@ -42,6 +44,25 @@ class ByYearLowerOrEqualTo:public Query{
     public:
         ByYearLowerOrEqualTo(int value);
         virtual ~ByYearLowerOrEqualTo();
-        virtual bool Accept(const Student &student) const overide;
+        virtual bool Accept(const Student &student) const override;
 };
 
+class AndQuery:public Query{
+    std::unique_ptr<Query> Query1;
+    std::unique_ptr<Query> Query2;
+    public:
+        AndQuery(std::unique_ptr<Query> Query1, std::unique_ptr<Query> Query2);
+        virtual ~AndQuery();
+        virtual bool Accept(const Student &student) const override;
+};
+
+class OrQuery:public Query{
+    std::unique_ptr<Query> Query1;
+    std::unique_ptr<Query> Query2;
+    public:
+        OrQuery(std::unique_ptr<Query> Query1, std::unique_ptr<Query> Query2);
+        virtual ~OrQuery();
+        virtual bool Accept(const Student &student) const override;
+};
+
+#endif
